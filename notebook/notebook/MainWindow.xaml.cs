@@ -69,5 +69,20 @@ namespace notebook
         {
             Textarea.Foreground = Brushes.White;
         }
+
+        private void Size1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Textarea.FontSize = 30;
+        }
+
+        private void Size2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Textarea.FontSize = 20;
+        }
+
+        private void Size3_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Textarea.FontSize = 15;
+        }
     }
 }
