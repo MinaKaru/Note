@@ -18,7 +18,7 @@
             <Button x:Name="NewBtn" Margin="0 0 0 10" Click="NewBtn_Click">New</Button>
             <Button Margin="0 0 0 10" Click="Button_Click_1">Open</Button>
             <Button x:Name="SaveBtn" Content="Save" Margin="0,0,0.4,0" Click="SaveBtn_Click"/>
-            
+
             <WrapPanel>
                 <Grid x:Name="Size1" Width="20" Height="35" Margin="10 10 10 0" MouseDown="Size1_MouseDown">
                     <TextBlock FontSize="30">A</TextBlock>
@@ -30,7 +30,6 @@
                     <TextBlock FontSize="15">A</TextBlock>
                 </Grid>
             </WrapPanel>
-            
             <WrapPanel>
                 <Grid x:Name="BlackBtn" Width="50" Height="50" MouseDown="BlackBtn_MouseDown">
                     <Ellipse Fill="Black" Width="25" Height="25" Margin="10 10 10 10"></Ellipse>
