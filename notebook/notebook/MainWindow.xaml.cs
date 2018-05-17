@@ -20,16 +20,36 @@ namespace notebook
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        string filename = "";
+        string newFileName = "";
+        string text = "";
+        string savetext = "";
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        // 存檔 ( 路徑 . 文字內容 )
+        void Save()
         {
-            // 讀檔 ( 路徑 )
-            //Textarea.Text = System.IO.File.ReadAllText(@"C:\Users\陳柏霖\Desktop\Note\123.txt");
+            Microsoft.Win32.SaveFileDialog dig = new Microsoft.Win32.SaveFileDialog();
 
+            Nullable<bool> result = dig.ShowDialog();
+
+            if (result == true)
+            {
+                System.IO.File.WriteAllText(dig.FileName, Textarea.Text);
+                filename = dig.FileName;
+                savetext = text; ;
+                Title = dig.SafeFileName;
+            }
+        }
+
+        // 讀檔 ( 路徑 )
+        void Open()
+        {
             Microsoft.Win32.OpenFileDialog dig = new Microsoft.Win32.OpenFileDialog();
 
             Nullable<bool> result = dig.ShowDialog();
@@ -37,22 +57,33 @@ namespace notebook
             if (result == true)
             {
                 Textarea.Text = System.IO.File.ReadAllText(dig.FileName);
+                filename = dig.FileName;
+                savetext = Textarea.Text;
+                Title = dig.SafeFileName;
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Open();
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            // 存檔 ( 路徑 . 文字內容 )
-            //System.IO.File.WriteAllText(@"C:\Users\陳柏霖\Desktop\Note\123.txt", Textarea.Text);
-
-            Microsoft.Win32.SaveFileDialog dig = new Microsoft.Win32.SaveFileDialog();
-
-            Nullable<bool> result = dig.ShowDialog();
-
-            if (result == true)
+            if (filename == newFileName)
             {
-                string filename = dig.FileName;
+                Save();
             }
+            else
+            {
+                System.IO.File.WriteAllText(filename, Textarea.Text);
+                savetext = text;
+            }
+        }
+
+        private void SaveasBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Save();
         }
 
         private void NewBtn_Click(object sender, RoutedEventArgs e)
@@ -62,17 +93,19 @@ namespace notebook
 
         private void BlackBtn_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Textarea.Foreground = Brushes.Black;
+            Textarea.Foreground = Brushes.White;
+            Textarea.Background = Brushes.Black;
         }
 
         private void WhiteBtn_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Textarea.Foreground = Brushes.White;
+            Textarea.Foreground = Brushes.Black;
+            Textarea.Background = Brushes.White;
         }
 
         private void Size1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Textarea.FontSize = 30;
+            Textarea.FontSize++;
         }
 
         private void Size2_MouseDown(object sender, MouseButtonEventArgs e)
@@ -82,7 +115,9 @@ namespace notebook
 
         private void Size3_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Textarea.FontSize = 15;
+            Textarea.FontSize--;
         }
+
+       
     }
 }

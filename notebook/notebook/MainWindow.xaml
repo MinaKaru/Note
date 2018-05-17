@@ -13,11 +13,12 @@
         </Grid.ColumnDefinitions>
 
         <!--右邊選單-->
-        <Rectangle Grid.Column="1" Fill="PaleVioletRed"></Rectangle>
+        <Rectangle Grid.Column="1" Fill="Gray"></Rectangle>
         <StackPanel Grid.Column="1" Margin="10">
             <Button x:Name="NewBtn" Margin="0 0 0 10" Click="NewBtn_Click">New</Button>
             <Button Margin="0 0 0 10" Click="Button_Click_1">Open</Button>
-            <Button x:Name="SaveBtn" Content="Save" Margin="0,0,0.4,0" Click="SaveBtn_Click"/>
+            <Button x:Name="SaveBtn" Content="Save" Margin="0 0 0 10" Click="SaveBtn_Click"/>
+            <Button x:Name="SaveasBtn" Margin="0,0,0.4,0" Click="SaveasBtn_Click">Save as</Button>
 
             <WrapPanel>
                 <Grid x:Name="Size1" Width="20" Height="35" Margin="10 10 10 0" MouseDown="Size1_MouseDown">
@@ -42,7 +43,7 @@
 
         <!--左邊打字區-->
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <TextBox x:Name="Textarea" AcceptsReturn="True" TextWrapping="Wrap" Background="Pink"></TextBox>
+            <TextBox x:Name="Textarea" AcceptsReturn="True" TextWrapping="Wrap" Background="White"></TextBox>
         </ScrollViewer>
     </Grid>
 </Window>
