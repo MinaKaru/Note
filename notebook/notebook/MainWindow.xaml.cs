@@ -31,7 +31,7 @@ namespace notebook
             InitializeComponent();
         }
 
-        // 存檔 ( 路徑 . 文字內容 )
+        // 存檔
         void Save()
         {
             Microsoft.Win32.SaveFileDialog dig = new Microsoft.Win32.SaveFileDialog();
@@ -47,7 +47,7 @@ namespace notebook
             }
         }
 
-        // 讀檔 ( 路徑 )
+        // 讀檔
         void Open()
         {
             Microsoft.Win32.OpenFileDialog dig = new Microsoft.Win32.OpenFileDialog();
@@ -60,6 +60,27 @@ namespace notebook
                 filename = dig.FileName;
                 savetext = Textarea.Text;
                 Title = dig.SafeFileName;
+            }
+        }
+
+        private void NewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (Textarea.Text != "")
+            {
+                var SaveResult = MessageBox.Show("Do you want to save,and create a new file? ", "Notebook", MessageBoxButton.YesNoCancel);
+                if (SaveResult == MessageBoxResult.Yes)
+                {
+                    Save();
+                    Textarea.Text = "";
+                }
+                else if (SaveResult == MessageBoxResult.No)
+                {
+                    Textarea.Text = "";
+                }
+            }
+            else
+            {
+                Textarea.Text = "";
             }
         }
 
@@ -86,15 +107,11 @@ namespace notebook
             Save();
         }
 
-        private void NewBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Textarea.Clear();
-        }
-
+        // 改變介面 , 字體顏色
         private void BlackBtn_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Textarea.Foreground = Brushes.White;
-            Textarea.Background = Brushes.Black;
+            Textarea.Background = Brushes.Gray;
         }
 
         private void WhiteBtn_MouseDown(object sender, MouseButtonEventArgs e)
@@ -103,6 +120,7 @@ namespace notebook
             Textarea.Background = Brushes.White;
         }
 
+        // 改變字體大小
         private void Size1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Textarea.FontSize++;
@@ -118,6 +136,5 @@ namespace notebook
             Textarea.FontSize--;
         }
 
-       
     }
 }

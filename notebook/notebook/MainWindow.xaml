@@ -5,45 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:notebook"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Notenook" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="510"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!--右邊選單-->
-        <Rectangle Grid.Column="1" Fill="Gray"></Rectangle>
-        <StackPanel Grid.Column="1" Margin="10">
-            <Button x:Name="NewBtn" Margin="0 0 0 10" Click="NewBtn_Click">New</Button>
-            <Button Margin="0 0 0 10" Click="Button_Click_1">Open</Button>
-            <Button x:Name="SaveBtn" Content="Save" Margin="0 0 0 10" Click="SaveBtn_Click"/>
-            <Button x:Name="SaveasBtn" Margin="0,0,0.4,0" Click="SaveasBtn_Click">Save as</Button>
+        <Rectangle Grid.Column="0" Fill="Black" Margin="0,0,170,0"></Rectangle>
+        <StackPanel Grid.Column="0" Margin="20,20,0,0" HorizontalAlignment="Left" Width="107">
+            <Button x:Name="NewBtn" BorderBrush="Transparent" Margin="0 0 0 10" Click="NewBtn_Click" Background="Black" Foreground="White" >New</Button>
+            <Button x:Name="OpenBtn" Margin="0 0 0 10" BorderBrush="Transparent" Click="Button_Click_1" Background="Black" Foreground="White">Open</Button>
+            <Button x:Name="SaveBtn" BorderBrush="Transparent" Content="Save" Margin="0 0 0 10" Background="Black" Foreground="White" Click="SaveBtn_Click"/>
+            <Button x:Name="SaveasBtn" BorderBrush="Transparent" Margin="0,0,0.4,0" Click="SaveasBtn_Click" Background="Black" Foreground="White">Save as</Button>
 
             <WrapPanel>
-                <Grid x:Name="Size1" Width="20" Height="35" Margin="10 10 10 0" MouseDown="Size1_MouseDown">
-                    <TextBlock FontSize="30">A</TextBlock>
+                 <Grid x:Name="Size3" Width="10" Height="15" Margin="10 19 10 0" MouseDown="Size3_MouseDown">
+                    <TextBlock FontSize="15" Foreground="White">A</TextBlock>
                 </Grid>
-                <Grid x:Name="Size2" Width="15" Height="25" Margin="10 10 10 0" MouseDown="Size2_MouseDown">
-                    <TextBlock FontSize="20">A</TextBlock>
+                <Grid x:Name="Size2" Width="15" Height="25" Margin="10 20 10 0" MouseDown="Size2_MouseDown">
+                    <TextBlock FontSize="20" Foreground="White">A</TextBlock>
                 </Grid>
-                <Grid x:Name="Size3" Width="10" Height="15" Margin="10 10 10 0" MouseDown="Size3_MouseDown">
-                    <TextBlock FontSize="15">A</TextBlock>
+                <Grid x:Name="Size1" Width="20" Height="35" Margin="10 12 10 0" MouseDown="Size1_MouseDown">
+                    <TextBlock FontSize="30" Foreground="White">A</TextBlock>
                 </Grid>
             </WrapPanel>
             <WrapPanel>
                 <Grid x:Name="BlackBtn" Width="50" Height="50" MouseDown="BlackBtn_MouseDown">
-                    <Ellipse Fill="Black" Width="25" Height="25" Margin="10 10 10 10"></Ellipse>
+                    <Ellipse Fill="Gray" Stroke="White" Width="25" Height="25" Margin="10 10 10 10"></Ellipse>
                 </Grid>
                 <Grid x:Name="WhiteBtn"  Width="50" Height="50" MouseDown="WhiteBtn_MouseDown">
-                    <Ellipse Fill="White" Width="25" Height="25" Margin="10 10 10 10"></Ellipse>
+                    <Ellipse Fill="White" Width="25" Height="25" Margin="15 10 10 10"></Ellipse>
                 </Grid>
             </WrapPanel>
-    </StackPanel>
+        </StackPanel>
 
         <!--左邊打字區-->
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <TextBox x:Name="Textarea" AcceptsReturn="True" TextWrapping="Wrap" Background="White"></TextBox>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="150 0 0 0">
+            <TextBox x:Name="Textarea" AcceptsReturn="True" TextWrapping="Wrap" Background="White" Width="360"></TextBox>
         </ScrollViewer>
+
     </Grid>
 </Window>
